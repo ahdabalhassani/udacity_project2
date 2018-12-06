@@ -24,9 +24,9 @@ class HumanPlayer(Player):
         Player.__init__(self)
 
     def move(self):
-        human_move = input("What's your move? xx ")
+        human_move = input("What's your move? xx ").lower()
         while human_move not in moves:
-            human_move = input("What's your move? ")
+            human_move = input("What's your move? ").lower()
         return human_move
 
 
@@ -84,27 +84,30 @@ class Game:
         self.p2.learn(move1)
         print(f"Player 1: {move1}  Player 2: {move2}")
         if move1 == move2:
-            print("No winner.\n")
+            print(" \n ----- No winner :( -----\n")
         elif beats(move1, move2):
-            print("Player 1 WINS")
+            print(" \n ----- Player 1 WINS :) ----- \n")
             self.score1 += 1
         else:
-            print("Player 2 WIN")
+            print(" \n ----- Player 2 WIN :) -----\n")
             self.score2 += 1
         print(f"plyer 1 score =  {self.score1}")
         print(f"plyer 2 score =  {self.score2}")
 
     def play_game(self):
-        rounds = int(input('How many rounds do you want to play? '))
-        if rounds.isnumeric() == True:
+        print(f"\n*........*\nGame start!\n*........*\n")
+
+        while True:
+            rounds = int(input('How many rounds do you want to play? '))
+            if rounds.isnumeric ():
+                for round in range(1, rounds+1):
+                    print(f"\n..........\n Round {round}\n..........\n")
+                    self.play_round()
+                print(f"\n..........\n Game over!\n..........\n")
+            else:
+                print('PLEASE TYPE AGAIN NUMBER ONLY .')
             continue
-        else:
-            print('PLEASE TYPE AGAIN NUMBER ONLY .')
-        print(f"\n..........\n Game start!\n..........\n")
-        for round in range(1, rounds+1):
-            print(f"\n..........\n Round {round}\n..........\n")
-            self.play_round()
-        print(f"\n..........\n Game over!\n..........\n")
+
 
 if __name__ == '__main__':
     while True:
