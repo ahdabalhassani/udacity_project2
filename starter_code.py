@@ -58,8 +58,7 @@ class CyclerPlayer(Player):
         Player.__init__(self)
         self.index = -1
 
-
-def move(self):
+    def move(self):
         self.index += 1
         if self.index % 3 == 0:
             return "rock"
@@ -86,7 +85,7 @@ class Game:
         print(f"Player 1: {move1}  Player 2: {move2}")
         if move1 == move2:
             print("No winner.\n")
-        if beats(move1, move2):
+        elif beats(move1, move2):
             print("Player 1 WINS")
             self.score1 += 1
         else:
@@ -97,7 +96,11 @@ class Game:
 
     def play_game(self):
         rounds = int(input('How many rounds do you want to play? '))
-        print("Game start!")
+        if rounds.isnumeric() == True:
+            continue
+        else:
+            print('PLEASE TYPE AGAIN NUMBER ONLY .')
+        print(f"\n..........\n Game start!\n..........\n")
         for round in range(1, rounds+1):
             print(f"\n..........\n Round {round}\n..........\n")
             self.play_round()
