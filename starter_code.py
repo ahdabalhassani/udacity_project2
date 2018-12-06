@@ -98,9 +98,9 @@ class Game:
         print(f"\n*........*\nGame start!\n*........*\n")
 
         while True:
-            rounds = int(input('How many rounds do you want to play? '))
-            if rounds.isnumeric ():
-                for round in range(1, rounds+1):
+            rounds = (input('How many rounds do you want to play? '))
+            if rounds.isnumeric():
+                for round in range(int(rounds)):
                     print(f"\n..........\n Round {round}\n..........\n")
                     self.play_round()
                 print(f"\n..........\n Game over!\n..........\n")
